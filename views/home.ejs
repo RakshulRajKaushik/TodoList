@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <title><%=title %></title>
+        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+        <link rel="stylesheet" href="/css/home.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+      </head>
+
+    <body>
+
+    <div id="container">
+      <h1 id="heading">TODO APP</h1>
+      <div class="border"></div>
+      <form action="/create-task" method="POST" id = "form">
+        <h2>Description</h2>
+        <input class="cinput" type="text" placeholder="What you want to do" name="task" required><br>
+        <div class="border"></div><br>
+        <div id="fields">
+          <div>
+            <h5 class="date-heading">CHOOSE CATEGORY</h5>
+            <select id="category" name="category">
+              <option>Select Category</option>
+              <option value="Work">Work</option>
+              <option value="Home">Home</option>
+              <option value="Personal">Personal</option>
+              <option value="Office">Office</option>
+              <option value="Workout">Workout</option>
+              <option value="College">College</option>
+              </option>
+            </select>
+          </div>
+          <div id="vertical"></div>
+          <div>
+          <h5 class="date-heading">DUE DATE</h5>
+          <input type="date" value="2020-02-01">
+          </div>
+      </div><br><br>
+      
+      <div id="add-button-div">
+        <button class="button"><i class="fas fa-plus">&nbsp;&nbsp;</i>ADD TASK</button>
+      </div>
+      <div class="border"></div>
+      
+      <%for ( let i of task_TODO){%>
+        <!-- <ul> -->
+          <div class="border"></div>
+          <div id="task-div">
+          <h5 id="list-items">
+            <i class="fas fa-calendar-alt icon"></i>
+            <%= i.task%>
+            <!-- <p id="d1" style="font-size : 15px; margin-left: 40px;"></p>              -->
+            <%= i.date%>
+          </h5>
+        </div>
+
+          <div class="delete-button">
+            <a href="/delete-task/?id=<%= i._id%>" style="font-size: 1rem;"><i class="fas fa-trash-alt"></i>&nbsp;<b>Delete</b></a>
+            <div id="category-item" style="font-size: 1rem; border-radius: 25px;"><b><%= i.category%></b></div>
+          </div>
+        <!-- </ul> -->
+        <%}%>
+      </form>
+    <script src="/js/date.js"
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    </body>
+</html>
+
